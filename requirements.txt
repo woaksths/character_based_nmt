@@ -1,0 +1,6 @@
+scipy
+torch==1.0.0
+numpy
+tqdm
+docopt
+nltk
