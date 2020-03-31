@@ -118,7 +118,7 @@ class VocabEntry(object):
         """ Convert list of sentences of words into list of list of list of character indices.
         @param sents (list[list[str]]): sentence(s) in words
         @return word_ids (list[list[list[int]]]): sentence(s) in indices
-        """
+        """ 
         ### YOUR CODE HERE for part 1e
         ### TODO: 
         ###     This method should convert characters in the input sentences into their 
@@ -127,8 +127,19 @@ class VocabEntry(object):
         ###
         ###     You must prepend each word with the `start_of_word` character and append 
         ###     with the `end_of_word` character. 
-
-
+        
+        word_ids = []
+        for sent in sents:
+            sent_list =[]
+            for word in sent:
+                word_list =[]
+                for char in word:
+                    word_list.append(self.char2id[char])
+                word_list = [self.start_of_word] + word_list + [self.end_of_word]
+                sent_list.append(word_list)
+            word_ids.append(sent_list)
+        return word_ids
+        
         ### END YOUR CODE
 
     def words2indices(self, sents):
