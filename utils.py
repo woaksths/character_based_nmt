@@ -32,7 +32,6 @@ def pad_sents_char(sents, char_pad_token):
 
     ### YOUR CODE HERE for part 1f
     ### TODO:
-    ###     Perform necessary padding to the sentences in the batch similar to the pad_sents()
     ###     method below using the padding character from the arguments. You should ensure all
     ###     sentences have the same number of words and each word has the same number of
     ###     characters.
@@ -40,10 +39,18 @@ def pad_sents_char(sents, char_pad_token):
     ###
     ###     You should NOT use the method `pad_sents()` below because of the way it handles
     ###     padding and unknown words.
-
-
+    sents = pad_sents(sents, char_pad_token)
+    sents_padded = []
+    for sent in sents:
+        sents_list =[]
+        for word in sent:
+            if len(word) < max_word_length:
+                word = word + [char_pad_token] * (max_word_length-len(word))
+            elif len(word) > max_word_length:
+                word = word[:max_word_length]
+            sents_list.append(word)
+        sents_padded.append(sents_list)
     ### END YOUR CODE
-
     return sents_padded
 
 
@@ -60,10 +67,14 @@ def pad_sents(sents, pad_token):
     sents_padded = []
 
     ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
-
-
+    max_len = 0
+    for sent in sents:
+        if len(sent) > max_len:
+            max_len = len(sent)
+    for sent in sents:
+        words_padded = sent + [[pad_token]]* (max_len-len(sent))
+        sents_padded.append(words_padded)
     ### END YOUR CODE FROM ASSIGNMENT 4
-
     return sents_padded
 
 

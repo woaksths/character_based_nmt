@@ -87,7 +87,6 @@ def question_1f_sanity_check():
     print("Running test on a list of sentences")
     sentences = [['Human:', 'What', 'do', 'we', 'want?'], ['Computer:', 'Natural', 'language', 'processing!'], ['Human:', 'When', 'do', 'we', 'want', 'it?'], ['Computer:', 'When', 'do', 'we', 'want', 'what?']]
     word_ids = vocab.words2charindices(sentences)
-
     padded_sentences = pad_sents_char(word_ids, 0)
     gold_padded_sentences = torch.load('./sanity_check_en_es_data/gold_padded_sentences.pkl')
     assert padded_sentences == gold_padded_sentences, "Sentence padding is incorrect: it should be:\n {} but is:\n{}".format(gold_padded_sentences, padded_sentences)

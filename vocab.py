@@ -127,7 +127,6 @@ class VocabEntry(object):
         ###
         ###     You must prepend each word with the `start_of_word` character and append 
         ###     with the `end_of_word` character. 
-        
         word_ids = []
         for sent in sents:
             sent_list =[]
