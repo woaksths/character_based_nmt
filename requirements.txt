@@ -1,5 +1,5 @@
 scipy
-torch==1.0.0
+torch==2.2.0
 numpy
 tqdm
 docopt
